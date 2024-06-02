@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scatter Plot Visualization</title>
+    <link rel = "stylesheet" href = "../static/css/styles.css">  
+</head>
+<body>
+    <h1 id="blue">Scatter Plot Visualization</h1>
+    <div class="grid-container">
+        <form method="post">
+            <label class="col-one">num_of_points: <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                type = "number"  maxlength="4" name="num_of_points" placeholder="e.g. 5000" required></label><br>
+            <label class="col-one">x_mean: <input type="number"  step="0.001" name="x_mean" placeholder="e.g. 5" required></label><br>
+            <div class="distributions">
+                <label>Normal
+                    <input type="radio" id="x_dist1" name="x_dist" value="normal">
+                </label>
+                <label>Uniform
+                    <input type="radio" id="x_dist2" name="x_dist" value="uniform">
+                </label>
+            </div>
+            <label class="col-one">x_std / x_range: <input type="number" step="0.001" name="x_std" placeholder="e.g. 1" required></label><br>
+            <label class="col-one">y = : <input type="text" name="y_eq" placeholder="e.g. x^2 + 2x + 15" required></label><br>
+            <label class="col-two">y noise mean: <input type="number" step="0.001" name="y_mean" placeholder="e.g. 5" required></label><br>
+            <div class="distributions">
+                <label>Normal
+                    <input type="radio" id="y_dist1" name="y_dist" value="normal">
+                </label>
+                <label>Uniform
+                    <input type="radio" id="y_dist2" name="y_dist" value="uniform">
+                </label>
+            </div>
+            <label class="col-two">y noise std dev / range: <input type="number" step="0.001" name="y_std" placeholder="e.g. 1" required></label><br>
+            <label class="col-two">order: <input type="number" step="0.001" name="order" placeholder="e.g. 2 for an x^2 polynomial fit" required></label><br>
+            <hr>
+            <input id="scatterButton" type="submit" value="Show Scatter">
+        </form>
+    
+        <div class="plot_adjustments">
+            <br>
+            {% if plot_div %}
+                {{ plot_div|safe }}
+            {% endif %}
+        </div>
+    </div>
+</body>
+</html>
